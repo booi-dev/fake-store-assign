@@ -45,7 +45,7 @@ const Header: React.FC = (props) => {
 
   return (
     <div className=" bg-yellow-500 px-4">
-      <div className="mx-auto max-w-[55rem]">
+      <div className="app-container">
         <h1 className="mx-auto w-fit pt-4 text-3xl font-bold tracking-wider">
           Fake Store
         </h1>

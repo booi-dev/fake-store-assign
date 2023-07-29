@@ -6,6 +6,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --main-black: #111827;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -28,10 +29,12 @@ body {
 
 .hero-img {
   background-image: url("/assets/imgs/hero-girl.png");
-  /* background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.8;
-  background-color: red; */
+}
+
+.app-container {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 55rem;
 }
 
 ::-webkit-scrollbar {
@@ -39,11 +42,9 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #eab308;
-  /* border-radius: 6px;  */
+  background-color: #363636;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #363636;
-  /* border-radius: 6px;  */
+  background-color: #eab308;
 }

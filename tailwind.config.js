@@ -18,6 +18,9 @@ module.exports = {
       borderColor: {
         "main-color": "#111827",
       },
+      textColor: {
+        "main-black": "var(--main-black)",
+      },
       keyframes: {
         invert: {
           from: {},

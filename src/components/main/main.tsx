@@ -1,15 +1,17 @@
 import React from "react";
 import axios from "axios";
 import Header from "../header/header";
-import Products from "../product/productList";
+import Products from "../product/products";
 import { TProduct } from "../../../type";
 
 const Main = async () => {
-  const apiURL = "https://fakestoreapi.com/products";
+  const apiURL = "https://fakestoreapi.com/products?limit=20";
 
-  const products: TProduct[] = await axios.get(apiURL);
+  const res = await axios.get<TProduct[]>(apiURL);
 
-  console.log(products);
+  const products: TProduct[] = res.data;
+
+  // console.log(products);
 
   return (
     <main className="min-h-[60vh] ">

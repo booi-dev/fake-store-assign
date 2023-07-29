@@ -10,7 +10,7 @@ const SearchBox = () => {
         className="w-full bg-transparent px-2 text-slate-950 focus:outline-transparent "
         placeholder="Search this blog"
       />
-      <button className="h-full rounded-r bg-red-500 px-2 py-2">
+      <button className="h-full rounded-r bg-red-500 px-2 py-2 active:bg-red-600">
         <Image src={searchIcon} alt="search" width={20} height={20} />
       </button>
     </div>

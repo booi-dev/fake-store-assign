@@ -39,8 +39,10 @@ const Header = () => {
 
   return (
     <div className="mx-auto max-w-[55rem] p-4">
-      <h1 className="mx-auto w-fit text-3xl">Fake Store</h1>
-      <div className="flex items-center gap-4">
+      <h1 className="mx-auto w-fit text-3xl font-bold tracking-wider">
+        Fake Store
+      </h1>
+      <div className="mt-10 flex items-center  gap-4">
         <BigMenuButton />
         <DropDownButton
           text="category"

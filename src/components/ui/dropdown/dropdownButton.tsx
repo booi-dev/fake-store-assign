@@ -5,6 +5,8 @@ import Image from "next/image";
 import React from "react";
 import Backdrop from "../backdrop/backdrop";
 
+import { cn } from "../../../../lib/utils";
+
 type DropDownButtonProps = {
   text: string;
   icon: string;
@@ -27,7 +29,13 @@ const DropDownButton: React.FC<DropDownButtonProps> = (props) => {
     <div className="relative flex items-center gap-2 rounded bg-main-color p-2">
       <div className="text-sm"> {text} </div>
       <button onClick={handleDropDownBtn}>
-        <Image src={icon} width={20} height={10} alt={text} />
+        <Image
+          className={cn("transition-all", isDrop && "rotate-[-180deg]")}
+          src={icon}
+          width={20}
+          height={10}
+          alt={text}
+        />
       </button>
       {isDrop && (
         <>

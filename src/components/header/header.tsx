@@ -1,8 +1,9 @@
 import React from "react";
 import BigMenuButton from "../ui/button/bigMenuButton";
 import DropDownButton from "../ui/dropdown/dropdownButton";
+import SearchBox from "../search/search";
 
-const dropdownIcon = "/assets/icons/dropdownIcon.png";
+const dropdownIcon = "/assets/icons/dropdownIcon.svg";
 
 const Header = () => {
   const droplist = [
@@ -37,7 +38,7 @@ const Header = () => {
   ];
 
   return (
-    <div className="mx-auto max-w-[55rem] bg-red-500 p-4">
+    <div className="mx-auto max-w-[55rem] p-4">
       <h1 className="mx-auto w-fit text-3xl">Fake Store</h1>
       <div className="flex items-center gap-4">
         <BigMenuButton />
@@ -46,6 +47,7 @@ const Header = () => {
           icon={dropdownIcon}
           droplist={droplist}
         />
+        <SearchBox />
       </div>
     </div>
   );

@@ -18,6 +18,12 @@ module.exports = {
       borderColor: {
         "main-color": "#111827",
       },
+      keyframes: {
+        invert: {
+          from: {},
+          to: {},
+        },
+      },
     },
   },
   plugins: [],

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import React from "react";
+import Backdrop from "../backdrop/backdrop";
 
 type DropDownButtonProps = {
   text: string;
@@ -29,18 +30,21 @@ const DropDownButton: React.FC<DropDownButtonProps> = (props) => {
         <Image src={icon} width={20} height={10} alt={text} />
       </button>
       {isDrop && (
-        <div className="absolute left-0 right-[-70%] top-10 max-h-[500px] overflow-scroll overflow-x-hidden rounded bg-main-color py-2">
-          <ul className="flex flex-col gap-2 ">
-            {droplist.map((item) => (
-              <li
-                key={item.id}
-                className="border-b-2 border-b-gray-800 px-4 py-2 active:bg-slate-800"
-              >
-                {item.itemName}
-              </li>
-            ))}
-          </ul>
-        </div>
+        <>
+          <div className="absolute left-0 right-[-70%] top-10 z-20 max-h-[500px] overflow-scroll overflow-x-hidden rounded bg-main-color py-2">
+            <ul className="flex flex-col gap-2 ">
+              {droplist.map((item) => (
+                <li
+                  key={item.id}
+                  className="border-b-2 border-b-gray-800 px-4 py-2 active:bg-slate-800"
+                >
+                  {item.itemName}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <Backdrop closeHandler={() => setIsDrop(false)} />
+        </>
       )}
     </div>
   );

@@ -11,7 +11,7 @@ import languageList from "./languageList";
 
 const dropdownIcon = "/assets/icons/dropdownIcon.svg";
 
-const Header: React.FC = () => {
+const Header: React.FC = (props) => {
   const droplist = [
     {
       id: "1",
@@ -44,25 +44,27 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <div className=" mx-auto max-w-[55rem] px-4">
-      <h1 className="mx-auto w-fit pt-4 text-3xl font-bold tracking-wider">
-        Fake Store
-      </h1>
-      <div className="mt-6 flex items-center justify-around gap-4">
-        <BigMenuButton />
-        <DropDownButton
-          text="category"
-          icon={dropdownIcon}
-          droplist={droplist}
-        />
-        <SearchBox />
-        <LanguageDropDown
-          defaultLanguage={languageList[0]}
-          droplist={languageList}
-        />
-        <Profile />
+    <div className=" bg-yellow-500 px-4">
+      <div className="mx-auto max-w-[55rem]">
+        <h1 className="mx-auto w-fit pt-4 text-3xl font-bold tracking-wider">
+          Fake Store
+        </h1>
+        <div className="mt-6 flex items-center justify-around gap-4">
+          <BigMenuButton />
+          <DropDownButton
+            text="category"
+            icon={dropdownIcon}
+            droplist={droplist}
+          />
+          <SearchBox />
+          <LanguageDropDown
+            defaultLanguage={languageList[0]}
+            droplist={languageList}
+          />
+          <Profile />
+        </div>
+        <HeroCarousel />
       </div>
-      <HeroCarousel />
     </div>
   );
 };

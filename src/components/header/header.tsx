@@ -4,44 +4,27 @@ import DropDownButton from "../ui/dropdown/dropdownButton";
 import LanguageDropDown from "../ui/dropdown/languageDropDown";
 import SearchBox from "../search/search";
 import Profile from "./profile";
-
 import HeroCarousel from "../hero/carousel";
 
 import languageList from "./languageList";
+import { getCategories } from "../utils/apiCalls";
 
 const dropdownIcon = "/assets/icons/dropdownIcon.svg";
 
-const Header: React.FC = (props) => {
-  const droplist = [
-    {
-      id: "1",
-      name: "No one",
-    },
-    {
-      id: "2",
-      name: "Care",
-    },
-    {
-      id: "3",
-      name: "What",
-    },
-    {
-      id: "4",
-      name: "You want",
-    },
-    {
-      id: "5",
-      name: "You want",
-    },
-    // {
-    //   id: "6",
-    //   itemName: "You want",
-    // },
-    // {
-    //   id: "7",
-    //   itemName: "You want",
-    // },
-  ];
+function generateCategoryArray(categories: string[]) {
+  return categories.map((category, index) => ({
+    id: index + 1,
+    category: category,
+  }));
+}
+
+type HeaderProps = {
+  products?: [];
+};
+
+const Header = async (props: HeaderProps) => {
+  const categories = await getCategories();
+  const categoryArray = generateCategoryArray(categories);
 
   return (
     <div className=" bg-yellow-500 px-4">
@@ -54,7 +37,7 @@ const Header: React.FC = (props) => {
           <DropDownButton
             text="category"
             icon={dropdownIcon}
-            droplist={droplist}
+            droplist={categoryArray}
           />
           <SearchBox />
           <LanguageDropDown

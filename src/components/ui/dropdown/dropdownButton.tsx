@@ -4,13 +4,14 @@ import { useState } from "react";
 import Image from "next/image";
 import React from "react";
 import Backdrop from "../backdrop/backdrop";
+import { useProductStore } from "@/store/productStore";
+import { getCategoriedProducts } from "@/components/utils/apiCalls";
 
 import { cn } from "../../../../lib/utils";
 
 type TCategory = {
-  id: string;
-  name: string;
-  icon?: string;
+  id: number;
+  category: string;
 };
 
 type DropDownButtonProps = {
@@ -19,20 +20,28 @@ type DropDownButtonProps = {
   light?: boolean;
   iconRevert?: boolean;
   droplist: TCategory[];
+  handleCategoriedProducts?: (p: string) => Promise<void>;
 };
 
 const DropDownButton: React.FC<DropDownButtonProps> = (props) => {
   const { text, icon, droplist, light, iconRevert } = props;
 
+  const setProducts = useProductStore((state) => state.setProducts);
+
   const [selectedCategory, setSelectedCategory] = useState<TCategory>({
-    id: "",
-    name: text,
-    icon: "",
+    id: 0,
+    category: text,
   });
   const [isDrop, setIsDrop] = useState(false);
 
+  const handleSetProducts = async (category: string) => {
+    const data = await getCategoriedProducts(category);
+    setProducts(data);
+  };
+
   const handleSelection = (category: TCategory) => {
     setSelectedCategory(category);
+    handleSetProducts(category.category);
     setIsDrop(false);
   };
 
@@ -50,9 +59,9 @@ const DropDownButton: React.FC<DropDownButtonProps> = (props) => {
     >
       <button
         onClick={handleDropDownBtn}
-        className="flex w-full items-center justify-between gap-2"
+        className="flex w-full items-center justify-between gap-2 capitalize"
       >
-        <div className="text-sm"> {selectedCategory.name} </div>
+        <div className="text-sm"> {selectedCategory.category} </div>
         <Image
           className={cn("transition-all", isDrop && "rotate-[-180deg]")}
           src={icon}
@@ -74,13 +83,13 @@ const DropDownButton: React.FC<DropDownButtonProps> = (props) => {
               {droplist.map((item) => (
                 <li
                   key={item.id}
-                  className="border-b-2 border-b-gray-800 px-4 py-2 hover:bg-slate-800"
+                  className="border-b-2 border-b-gray-800 px-4 py-2  hover:bg-slate-800"
                 >
                   <button
                     onClick={() => handleSelection(item)}
-                    className="w-full text-left"
+                    className="w-full text-left capitalize"
                   >
-                    {item.name}
+                    {item.category}
                   </button>
                 </li>
               ))}

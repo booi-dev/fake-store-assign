@@ -1,15 +1,25 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import { TProduct } from "../../../type";
+import { getProducts } from "../utils/apiCalls";
+import { useProductStore } from "@/store/productStore";
 
 import ProductCard from "./productCard";
 
-type HeaderProp = {
-  products: TProduct[];
-};
+const Products: React.FC = (props) => {
+  const products = useProductStore((state) => state.products);
+  const setProducts = useProductStore((state) => state.setProducts);
 
-const Products: React.FC<HeaderProp> = (props) => {
-  const { products } = props;
-  // console.log(products);
+  useEffect(() => {
+    const handleGetProducts = async () => {
+      const data = await getProducts();
+      console.log(data);
+      setProducts(data);
+    };
+
+    handleGetProducts();
+  }, []);
 
   return (
     <div className="min-h-[50vh] bg-slate-100 p-4">

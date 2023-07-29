@@ -3,10 +3,15 @@ import BigMenuButton from "../ui/button/bigMenuButton";
 import DropDownButton from "../ui/dropdown/dropdownButton";
 import LanguageDropDown from "../ui/dropdown/languageDropDown";
 import SearchBox from "../search/search";
+import Profile from "./profile";
+
+import HeroCarousel from "../hero/carousel";
+
+import languageList from "./languageList";
 
 const dropdownIcon = "/assets/icons/dropdownIcon.svg";
 
-const Header = () => {
+const Header: React.FC = () => {
   const droplist = [
     {
       id: "1",
@@ -38,30 +43,12 @@ const Header = () => {
     // },
   ];
 
-  const languageList = [
-    {
-      id: "english",
-      name: "English",
-      flagIcon: "/assets/icons/uk-flag-icon.svg",
-    },
-    {
-      id: "india",
-      name: "India",
-      flagIcon: "/assets/icons/india-flag-icon.svg",
-    },
-    {
-      id: "japan",
-      name: "Japan",
-      flagIcon: "/assets/icons/japan-flag-icon.svg",
-    },
-  ];
-
   return (
-    <div className="mx-auto max-w-[55rem] p-4">
-      <h1 className="mx-auto w-fit text-3xl font-bold tracking-wider">
+    <div className=" mx-auto max-w-[55rem] px-4">
+      <h1 className="mx-auto w-fit pt-4 text-3xl font-bold tracking-wider">
         Fake Store
       </h1>
-      <div className="mt-10 flex items-center justify-around gap-4">
+      <div className="mt-6 flex items-center justify-around gap-4">
         <BigMenuButton />
         <DropDownButton
           text="category"
@@ -73,7 +60,9 @@ const Header = () => {
           defaultLanguage={languageList[0]}
           droplist={languageList}
         />
+        <Profile />
       </div>
+      <HeroCarousel />
     </div>
   );
 };

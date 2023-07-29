@@ -5,7 +5,7 @@ const searchIcon = "/assets/icons/searchIcon.svg";
 
 const SearchBox = () => {
   return (
-    <div className="flex items-center rounded bg-slate-50">
+    <div className="flex w-full max-w-[400px] items-center rounded bg-slate-50">
       <input
         className="w-full bg-transparent px-2 text-slate-950 focus:outline-transparent "
         placeholder="Search this blog"

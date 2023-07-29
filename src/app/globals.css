@@ -26,6 +26,14 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+.hero-img {
+  background-image: url("/assets/imgs/hero-girl.png");
+  /* background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.8;
+  background-color: red; */
+}
+
 ::-webkit-scrollbar {
   width: 12px; /* Width of the scrollbar */
 }

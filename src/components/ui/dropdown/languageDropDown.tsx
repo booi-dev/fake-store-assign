@@ -27,7 +27,6 @@ const LanguageDropDown: React.FC<LanguageDropDownProps> = (props) => {
   const handleSelectLanguage = (lan: TLanguage) => {
     setSelectedLanguage(lan);
     setIsDrop(false);
-    console.log("kjhj");
   };
 
   const handleDropDownBtn = () => {
@@ -35,7 +34,7 @@ const LanguageDropDown: React.FC<LanguageDropDownProps> = (props) => {
   };
 
   return (
-    <div className="relative min-w-[120px] cursor-pointer rounded bg-slate-100 p-2 text-black">
+    <div className="relative min-w-[120px] flex-shrink-0 cursor-pointer rounded bg-slate-100 p-2 text-black">
       <div
         className="flex items-center justify-between gap-2"
         onClick={handleDropDownBtn}
@@ -59,12 +58,12 @@ const LanguageDropDown: React.FC<LanguageDropDownProps> = (props) => {
 
       {isDrop && (
         <>
-          <div className="absolute left-0 right-[-30%] top-10 z-20 max-h-[500px] overflow-scroll overflow-x-hidden rounded bg-slate-100 py-2">
-            <ul className="flex flex-col gap-2 ">
+          <div className="absolute left-0 right-[-30%] top-10 z-20 max-h-[500px] overflow-auto overflow-x-hidden rounded bg-slate-100 py-2">
+            <ul className="flex flex-col ">
               {droplist.map((item) => (
                 <li
                   key={item.id}
-                  className="flex items-center gap-2 px-4 py-2 active:bg-slate-200"
+                  className="flex items-center gap-2 px-4 py-2 hover:bg-slate-200"
                   onClick={() => handleSelectLanguage(item)}
                 >
                   <Image

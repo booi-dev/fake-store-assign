@@ -52,7 +52,7 @@ const DropDownButton: React.FC<DropDownButtonProps> = (props) => {
   return (
     <div
       className={cn(
-        "relative min-w-[110px] flex-shrink-0 gap-1 rounded bg-main-color p-2",
+        "relative min-w-[110px] max-w-[10rem] flex-1 flex-shrink-0 gap-1 rounded bg-main-color p-2",
         light && " bg-slate-100 text-black",
         iconRevert && "flex-row-reverse",
       )}

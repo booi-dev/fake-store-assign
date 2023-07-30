@@ -30,21 +30,25 @@ const Header = async (props: HeaderProps) => {
     <div className=" bg-yellow-500 px-4">
       <div className="app-container">
         <h1 className="mx-auto w-fit pt-4 text-3xl font-bold tracking-wider">
-          Fake Store
+          E-Store
         </h1>
-        <div className="mt-6 flex items-center justify-around gap-4">
-          <BigMenuButton />
-          <DropDownButton
-            text="category"
-            icon={dropdownIcon}
-            droplist={categoryArray}
-          />
-          <SearchBox />
-          <LanguageDropDown
-            defaultLanguage={languageList[0]}
-            droplist={languageList}
-          />
-          <Profile />
+        <div className="mt-6 flex flex-col-reverse items-center justify-between gap-2 sm:flex-row md:gap-4">
+          <div className=" flex flex-1 justify-between gap-2 md:gap-4">
+            <BigMenuButton />
+            <DropDownButton
+              text="category"
+              icon={dropdownIcon}
+              droplist={categoryArray}
+            />
+            <SearchBox />
+          </div>
+          <div className="ml-auto flex gap-2 md:gap-4">
+            <LanguageDropDown
+              defaultLanguage={languageList[0]}
+              droplist={languageList}
+            />
+            <Profile />
+          </div>
         </div>
         <HeroCarousel />
       </div>

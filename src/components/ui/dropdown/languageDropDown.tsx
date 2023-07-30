@@ -34,7 +34,7 @@ const LanguageDropDown: React.FC<LanguageDropDownProps> = (props) => {
   };
 
   return (
-    <div className="relative min-w-[120px] flex-shrink-0 cursor-pointer rounded bg-slate-100 p-2 text-black">
+    <div className=" relative hidden min-w-[120px] flex-shrink-0 cursor-pointer rounded bg-slate-100 p-2 text-black md:block">
       <div
         className="flex items-center justify-between gap-2"
         onClick={handleDropDownBtn}

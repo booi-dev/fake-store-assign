@@ -1,5 +1,5 @@
 import React from "react";
-import BigMenuButton from "../ui/button/bigMenuButton";
+import MenuButton from "../ui/button/MenuButton";
 import DropDownButton from "../ui/dropdown/dropdownButton";
 import LanguageDropDown from "../ui/dropdown/languageDropDown";
 import SearchBox from "../search/search";
@@ -7,7 +7,7 @@ import Profile from "./profile";
 import HeroCarousel from "../hero/carousel";
 
 import languageList from "./languageList";
-import { getCategories } from "../utils/apiCalls";
+import { getCategories, getProducts } from "../utils/apiCalls";
 
 const dropdownIcon = "/assets/icons/dropdownIcon.svg";
 
@@ -23,8 +23,9 @@ type HeaderProps = {
 };
 
 const Header = async (props: HeaderProps) => {
-  const categories = await getCategories();
-  const categoryArray = generateCategoryArray(categories);
+  const categoryData = await getCategories();
+  const productData = await getProducts();
+  const categories = generateCategoryArray(categoryData);
 
   return (
     <div className=" bg-yellow-500 px-4">
@@ -32,15 +33,17 @@ const Header = async (props: HeaderProps) => {
         <h1 className="mx-auto w-fit pt-4 text-3xl font-bold tracking-wider">
           E-Store
         </h1>
-        <div className="mt-6 flex flex-col-reverse items-center justify-between gap-2 sm:flex-row md:gap-4">
+        <div className="mt-4 flex flex-col-reverse  justify-between gap-2 sm:flex-row md:gap-4">
           <div className=" flex flex-1 justify-between gap-2 md:gap-4">
-            <BigMenuButton />
+            <div className="hidden items-center md:flex">
+              <MenuButton options={{ position: "middle" }} />
+            </div>
             <DropDownButton
               text="category"
               icon={dropdownIcon}
-              droplist={categoryArray}
+              droplist={categories}
             />
-            <SearchBox />
+            <SearchBox productData={productData} />
           </div>
           <div className="ml-auto flex gap-2 md:gap-4">
             <LanguageDropDown

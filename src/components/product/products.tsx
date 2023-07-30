@@ -14,7 +14,7 @@ const Products: React.FC = (props) => {
   useEffect(() => {
     const handleGetProducts = async () => {
       const data = await getProducts();
-      console.log(data);
+      // console.log(data);
       setProducts(data);
     };
 

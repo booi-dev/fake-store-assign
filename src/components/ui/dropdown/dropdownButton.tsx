@@ -52,16 +52,16 @@ const DropDownButton: React.FC<DropDownButtonProps> = (props) => {
   return (
     <div
       className={cn(
-        "relative min-w-[110px] max-w-[10rem] flex-1 flex-shrink-0 gap-1 rounded bg-main-color p-2",
+        "relative flex min-w-[10rem] max-w-[10rem] flex-1 flex-shrink-0 items-center gap-1 rounded bg-main-color p-2",
         light && " bg-slate-100 text-black",
         iconRevert && "flex-row-reverse",
       )}
     >
       <button
         onClick={handleDropDownBtn}
-        className="flex w-full items-center justify-between gap-2 capitalize"
+        className="flex w-full shrink-0 items-center justify-between gap-2 capitalize"
       >
-        <div className="text-sm"> {selectedCategory.category} </div>
+        <div className="shrink-0 text-sm"> {selectedCategory.category} </div>
         <Image
           className={cn("transition-all", isDrop && "rotate-[-180deg]")}
           src={icon}

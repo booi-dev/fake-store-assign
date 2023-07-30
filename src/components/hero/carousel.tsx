@@ -5,7 +5,7 @@ const HeroCarousel = () => {
     <div className="relative flex min-h-[60vh] w-full flex-col items-center justify-center">
       <div className="hero-img bg-red absolute h-full w-full bg-cover bg-center bg-no-repeat opacity-80" />
 
-      <h2 className="z-10 max-w-[45rem] text-center text-6xl font-bold uppercase text-yellow-100">
+      <h2 className="z-10 max-w-[45rem] select-none text-center text-6xl font-bold uppercase text-yellow-100">
         Get start your favorite shopping
       </h2>
 

@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 const cartIcon = "/assets/icons/cart-icon.svg";
-const personIcon = "/assets/icons/person-icon.svg";
+const personIcon = "/assets/icons/account-icon.png";
 
 const Profile: React.FC = () => {
   return (

@@ -8,6 +8,7 @@ import HeroCarousel from "../hero/carousel";
 
 import languageList from "./languageList";
 import { getCategories, getProducts } from "../utils/apiCalls";
+import { TProduct } from "../../../type";
 
 const dropdownIcon = "/assets/icons/dropdownIcon.svg";
 
@@ -19,12 +20,11 @@ function generateCategoryArray(categories: string[]) {
 }
 
 type HeaderProps = {
-  products?: [];
+  productData: TProduct[];
 };
 
-const Header = async (props: HeaderProps) => {
+const Header = async ({ productData }: HeaderProps) => {
   const categoryData = await getCategories();
-  const productData = await getProducts();
   const categories = generateCategoryArray(categoryData);
 
   return (
@@ -42,6 +42,7 @@ const Header = async (props: HeaderProps) => {
               text="category"
               icon={dropdownIcon}
               droplist={categories}
+              productData={productData}
             />
             <SearchBox productData={productData} />
           </div>

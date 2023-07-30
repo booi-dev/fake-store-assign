@@ -12,9 +12,18 @@ type SearchProps = {
 };
 
 const SearchBox: React.FC<SearchProps> = ({ productData }) => {
+  const setFilter = useProductStore((state) => state.setFilter);
   const setProducts = useProductStore((state) => state.setProducts);
 
+  const [searchInputVal, setSearchInputVal] = useState("");
   const [searchNotFound, setSearchNotFound] = useState(false);
+
+  const goToTop = () => {
+    window.scrollTo({
+      top: 600,
+      behavior: "smooth",
+    });
+  };
 
   const filter = (input: string) => {
     if (!input) {
@@ -41,13 +50,21 @@ const SearchBox: React.FC<SearchProps> = ({ productData }) => {
       return;
     }
 
-    console.log(newProducts);
+    // console.log(newProducts);
     setProducts(newProducts);
   };
 
   const handleInputOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
+    setSearchInputVal(val);
     filter(val);
+  };
+
+  const handlePressEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      goToTop();
+      setFilter(`#${searchInputVal}`);
+    }
   };
 
   return (
@@ -56,6 +73,7 @@ const SearchBox: React.FC<SearchProps> = ({ productData }) => {
         className="w-full bg-transparent p-2 text-slate-950 focus:border-0 focus:outline-0"
         placeholder="Search this blog"
         onChange={handleInputOnChange}
+        onKeyDown={handlePressEnter}
       />
       <button className="h-full rounded-r bg-red-500 px-2 py-2 active:bg-red-600">
         <Image src={searchIcon} alt="search" width={20} height={20} />

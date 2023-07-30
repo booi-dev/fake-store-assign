@@ -8,6 +8,7 @@ import { useProductStore } from "@/store/productStore";
 import { getCategoriedProducts } from "@/components/utils/apiCalls";
 
 import { cn } from "../../../../lib/utils";
+import { TProduct } from "../../../../type";
 
 type TCategory = {
   id: number;
@@ -19,13 +20,15 @@ type DropDownButtonProps = {
   icon: string;
   light?: boolean;
   iconRevert?: boolean;
+  productData: TProduct[];
   droplist: TCategory[];
   handleCategoriedProducts?: (p: string) => Promise<void>;
 };
 
 const DropDownButton: React.FC<DropDownButtonProps> = (props) => {
-  const { text, icon, droplist, light, iconRevert } = props;
+  const { text, icon, droplist, light, iconRevert, productData } = props;
 
+  const setFilter = useProductStore((state) => state.setFilter);
   const setProducts = useProductStore((state) => state.setProducts);
 
   const [selectedCategory, setSelectedCategory] = useState<TCategory>({
@@ -34,13 +37,29 @@ const DropDownButton: React.FC<DropDownButtonProps> = (props) => {
   });
   const [isDrop, setIsDrop] = useState(false);
 
+  const goToTop = () => {
+    window.scrollTo({
+      top: 600,
+      behavior: "smooth",
+    });
+  };
+
+  const handleFilteringByCategory = (categoryToFind: string) => {
+    const filteredProducts = productData.filter(
+      (prod) => prod.category === categoryToFind,
+    );
+    return filteredProducts;
+  };
+
   const handleSetProducts = async (category: string) => {
-    const data = await getCategoriedProducts(category);
+    const data = handleFilteringByCategory(category);
     setProducts(data);
   };
 
   const handleSelection = (category: TCategory) => {
+    goToTop();
     setSelectedCategory(category);
+    setFilter(category.category);
     handleSetProducts(category.category);
     setIsDrop(false);
   };
